@@ -1,5 +1,4 @@
 ﻿using CollegeManagement.Services;
-
 namespace CollegeManagement.Tests
 {
     public class GradeCalculatorTests
@@ -55,3 +54,4 @@ namespace CollegeManagement.Tests
         }
     }
 }
+

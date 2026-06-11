@@ -1,0 +1,13 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Authorization
+@attribute [AllowAnonymous]
+
+<h3>Login</h3>
+<form method="post" action="/auth/login">
+    <AntiforgeryToken />
+    <input name="Email" type="email" />
+    <input name="Password" type="password" />
+    <input name="RememberMe" type="checkbox" value="true" />
+
+    <button type="submit">Login</button>
+</form>

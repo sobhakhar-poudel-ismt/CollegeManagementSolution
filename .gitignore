@@ -40,3 +40,5 @@ secrets.json
 *.tmp
 *.temp
 
+# Nested repo backup created while flattening CollegeManagement
+CollegeManagement/.git_backup/

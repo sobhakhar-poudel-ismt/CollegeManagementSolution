@@ -1,0 +1,62 @@
+﻿@page "/admin/departments"
+@using CollegeManagement.Components.ManageDepartment
+@using CollegeManagement.Models.ViewModels
+@using CollegeManagement.Services
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+@rendermode InteractiveServer
+
+@inject IDepartmentService Service
+
+
+<div class="row">
+    <div class="col-6">
+        <DepartmentForm Model="SelectedDepartment" OnSaved="SaveForm" />
+    </div>
+
+    <div class="col-6">
+        <DepartmentTable OnEdit="EditDepartment" />
+    </div>
+</div>
+
+@code {
+    private DepartmentViewModel SelectedDepartment = new();
+
+    private void EditDepartment(DepartmentViewModel model)
+    {
+        SelectedDepartment = model;
+    }
+
+    private void SaveForm()
+    {
+        SelectedDepartment = new();
+    }
+}
+
+ @* Model="SelectedDepartment" OnSaved="SaveForm" *@
+ @* OnEdit="EditDepartment" *@
+
+
+@*  /departments -> View
+ /add-department
+ /edit-department
+
+
+ /department 
+     FOrm
+     Table *@
+  
+
+
+
+
+@* //Department Table
+    onIntialize( data load)
+    data assign in variable 
+    based on variable, UI generate *@
+
+@* //Create form
+   //Exception Handling
+   //Server Side validation -> Department name must not be duplicate
+                               unique department name
+Custom Exception class *@
