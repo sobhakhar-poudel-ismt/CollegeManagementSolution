@@ -1,0 +1,31 @@
+# Build output
+bin/
+obj/
+publish/
+
+# Visual Studio and IDE files
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test artifacts
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Logs and diagnostics
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
