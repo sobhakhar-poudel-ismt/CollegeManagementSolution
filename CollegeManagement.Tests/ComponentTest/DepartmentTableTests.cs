@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using CollegeManagement.Models.ViewModels;
 using CollegeManagement.Services;
 using CollegeManagement.Components.ManageDepartment;
-
 namespace CollegeManagement.Tests.Components;
 
 public class DepartmentTableTests : BunitContext
@@ -16,7 +15,28 @@ public class DepartmentTableTests : BunitContext
             new FakeDepartmentService()
         );
         // Act
-        var cut = Render<DepartmentTable>();
+
+        var departments = new List<DepartmentViewModel>
+{
+    new()
+    {
+        DepartmentId = 1,
+        Name = "IT",
+        Description = "Information Technology"
+    },
+    new()
+    {
+        DepartmentId = 2,
+        Name = "HR",
+        Description = "Human Resource"
+    }
+};
+        var cut = Render<DepartmentTable>(parameters => parameters
+            .Add(p => p.Departmentss, departments)
+        );
+        //var cut = Render<DepartmentTable>();
+
+        Console.WriteLine( cut );
         // Assert
         cut.WaitForAssertion(() =>
         {
@@ -31,6 +51,7 @@ public class DepartmentTableTests : BunitContext
     }
 
  }
+
 
 public class FakeDepartmentService : IDepartmentService
 {
@@ -53,16 +74,20 @@ public class FakeDepartmentService : IDepartmentService
         });
     }
 
-    public Task CreateAsync(DepartmentViewModel model)
-        => Task.CompletedTask;
 
-    public Task UpdateAsync(DepartmentViewModel model)
-        => Task.CompletedTask;
+    public Task DeleteAsync(DepartmentViewModel model)
+    {
+        throw new NotImplementedException();
+    }
 
-    public Task DeleteAsync(int id)
-        => Task.CompletedTask;
+ 
 
     public Task<DepartmentViewModel> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateAsync(DepartmentViewModel model)
     {
         throw new NotImplementedException();
     }
@@ -71,9 +96,9 @@ public class FakeDepartmentService : IDepartmentService
     {
         throw new NotImplementedException();
     }
-
-    public Task DeleteAsync(DepartmentViewModel model)
-    {
-        throw new NotImplementedException();
-    }
 }
+
+/*dotnet add package bunit
+dotnet add package Microsoft.NET.Test.Sdk
+dotnet add package xunit
+dotnet add package xunit.runner.visualstudio*/

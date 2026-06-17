@@ -40,6 +40,9 @@
     [Parameter]
     public EventCallback<DepartmentViewModel> OnEdit { get; set; }
 
+    [Parameter]
+    public List<DepartmentViewModel> Departmentss { get; set; } = [];
+
     private List<DepartmentViewModel> Departments = new();
 
     protected override async Task OnInitializedAsync()
@@ -52,3 +55,10 @@
         await OnEdit.InvokeAsync(model);
     }
 }
+
+@* Inject Servvcice via DI
+//Fetch data from Serivce if exist
+//store data in variable and generate UI based on that
+
+input= data(from serivce)
+outout= HTML table UI *@
